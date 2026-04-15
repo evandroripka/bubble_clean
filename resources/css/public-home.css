@@ -1,4 +1,5 @@
 .public-home {
+    /* Bubble Clean brand tokens for the public marketing experience. */
     --bubble-deep-blue: #093f70;
     --bubble-sky-blue: #00adef;
     --bubble-aqua: #00bbd6;
@@ -29,9 +30,12 @@
     --bubble-aqua-30: rgba(0, 187, 214, 0.3);
     --bubble-aqua-45: rgba(0, 187, 214, 0.45);
     --bubble-aqua-50: rgba(0, 187, 214, 0.5);
+    /* Semantic aliases keep components tied to the brand rather than raw hex values. */
     --color-brand-primary: var(--bubble-deep-blue);
     --color-brand-secondary: var(--bubble-sky-blue);
     --color-brand-tertiary: var(--bubble-aqua);
+    --color-link-default: var(--color-brand-primary);
+    --color-link-hover: var(--color-brand-tertiary);
     --color-text-strong: var(--bubble-black);
     --color-text-body: var(--bubble-gray-body);
     --color-text-muted: var(--bubble-gray-600);
@@ -48,6 +52,9 @@
     background: var(--color-surface-base);
     color: var(--color-text-body);
     font-family: 'Poppins', 'Barlow', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
 }
 
 body.mobile-menu-open {
@@ -65,8 +72,15 @@ body.mobile-menu-open {
     max-width: 100%;
 }
 
-.public-home a {
-    color: inherit;
+:where(.public-home) a {
+    color: var(--color-link-default);
+    text-decoration: none;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+:where(.public-home) a:hover,
+:where(.public-home) a:focus-visible {
+    color: var(--color-link-hover);
 }
 
 .public-home section[id] {
@@ -74,7 +88,8 @@ body.mobile-menu-open {
 }
 
 .public-container {
-    width: min(1180px, calc(100% - 2rem));
+    width: min(1180px, 100% - 2rem);
+    max-width: 100%;
     margin: 0 auto;
 }
 
@@ -103,6 +118,7 @@ body.mobile-menu-open {
 .public-topbar__meta span {
     font-size: 0.92rem;
     font-weight: 500;
+    color: var(--bubble-white);
 }
 
 .public-topbar__contact a:not(:last-child)::after {
@@ -131,6 +147,8 @@ body.mobile-menu-open {
 
 .public-topbar__quote:hover {
     transform: translateY(-1px);
+    background: var(--color-brand-tertiary);
+    color: var(--bubble-white);
     box-shadow: 0 10px 30px var(--bubble-sky-blue-24);
 }
 
@@ -141,12 +159,13 @@ body.mobile-menu-open {
     border-bottom: 1px solid var(--bubble-deep-blue-08);
     background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(16px);
+    overflow-x: clip;
 }
 
 .public-site-header__row {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: space-between;
     gap: 1.5rem;
     min-height: 5.5rem;
 }
@@ -155,6 +174,8 @@ body.mobile-menu-open {
     display: inline-flex;
     align-items: center;
     flex: 0 0 auto;
+    max-width: 20rem;
+    min-width: 0;
 }
 
 .public-site-header__logo {
@@ -163,9 +184,15 @@ body.mobile-menu-open {
     max-height: none;
 }
 
+.public-site-header__nav {
+    min-width: 0;
+    justify-self: center;
+}
+
 .public-site-header__nav ul {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1.75rem;
     margin: 0;
     padding: 0;
@@ -175,18 +202,24 @@ body.mobile-menu-open {
 .public-site-header__nav a {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--color-text-strong);
+    color: var(--color-brand-primary);
     transition: color 0.3s ease;
 }
 
 .public-site-header__nav a:hover {
-    color: var(--color-brand-primary);
+    color: var(--color-brand-tertiary);
 }
 
 .public-site-header__actions {
     display: flex;
     align-items: center;
     gap: 0.85rem;
+    justify-self: end;
+    flex-shrink: 0;
+}
+
+.public-site-header__actions .clenia-button {
+    white-space: nowrap;
 }
 
 .public-menu-toggle {
@@ -288,7 +321,7 @@ body.mobile-menu-open {
 .public-mobile-menu nav a {
     font-size: 1.05rem;
     font-weight: 700;
-    color: var(--color-text-strong);
+    color: var(--color-brand-primary);
 }
 
 .public-mobile-menu__contact {
@@ -318,11 +351,17 @@ body.mobile-menu-open {
     font-weight: 700;
     line-height: 1;
     overflow: hidden;
+    border: 1px solid transparent;
     transition:
         transform 0.3s ease,
         background 0.3s ease,
         color 0.3s ease,
         box-shadow 0.3s ease;
+}
+
+.clenia-button,
+.clenia-button:visited {
+    color: var(--bubble-white);
 }
 
 .clenia-button::before {
@@ -357,6 +396,11 @@ body.mobile-menu-open {
     box-shadow: none;
 }
 
+.clenia-button.is-secondary,
+.clenia-button.is-secondary:visited {
+    color: var(--color-brand-primary);
+}
+
 .clenia-button.is-secondary:hover {
     background: var(--color-brand-primary);
     color: var(--bubble-white);
@@ -367,6 +411,11 @@ body.mobile-menu-open {
     background: rgba(255, 255, 255, 0.16);
     color: var(--bubble-white);
     border-color: rgba(255, 255, 255, 0.28);
+}
+
+.clenia-button.is-inverse,
+.clenia-button.is-inverse:visited {
+    color: var(--bubble-white);
 }
 
 .clenia-button.is-inverse:hover {
@@ -391,7 +440,7 @@ body.mobile-menu-open {
             rgba(255, 255, 255, 0.72) 68%,
             rgba(255, 255, 255, 0.35) 100%
         ),
-        url('/images/theme/banner-bg.jpg') center / cover no-repeat;
+        url('/images/home/hero-cover.webp') center / cover no-repeat;
 }
 
 .hero-section__grid {
@@ -1134,8 +1183,17 @@ body.mobile-menu-open {
     font-weight: 600;
 }
 
+.cta-banner__email:hover,
+.cta-banner__email:focus-visible {
+    color: var(--color-brand-tertiary);
+}
+
 .public-footer {
-    background: #082f54;
+    background: linear-gradient(
+        180deg,
+        var(--color-brand-primary) 0%,
+        var(--bubble-overlay-dark) 100%
+    );
     color: rgba(255, 255, 255, 0.82);
 }
 
@@ -1188,8 +1246,8 @@ body.mobile-menu-open {
 
 .public-footer__social-link:hover {
     transform: translateY(-1px);
-    border-color: rgba(0, 173, 239, 0.42);
-    background: var(--bubble-sky-blue-10);
+    border-color: var(--bubble-aqua-45);
+    background: var(--bubble-aqua-18);
 }
 
 .public-footer__column h3 {
@@ -1208,7 +1266,7 @@ body.mobile-menu-open {
 }
 
 .public-footer__column a:hover {
-    color: var(--color-brand-secondary);
+    color: var(--color-brand-tertiary);
 }
 
 .public-footer__bottom {
@@ -1233,9 +1291,18 @@ body.mobile-menu-open {
     font-weight: 700;
 }
 
+.public-footer__bottom a:hover,
+.public-footer__bottom a:focus-visible {
+    color: var(--color-brand-tertiary);
+}
+
 @media (max-width: 1080px) {
     .public-site-header__nav {
         display: none;
+    }
+
+    .public-site-header__row {
+        grid-template-columns: minmax(0, 1fr) auto;
     }
 
     .public-menu-toggle {

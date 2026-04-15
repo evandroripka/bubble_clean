@@ -51,7 +51,7 @@ export default function PublicFooter({
                 <div className="public-footer__brand">
                     <BubbleCleanLogo
                         className="public-footer__logo"
-                        src="/images/logo-dark.png"
+                        src="/images/logo-light.png"
                     />
                     <p>{locationLabel}</p>
 

@@ -38,7 +38,11 @@ export default function Home({
     contactEmail,
 }: PublicHomeProps) {
     const contactPhoneHref = contactPhone.replace(/[^\d+]/g, '');
-    const quoteHref = '#contact';
+    // Route quote CTAs to a direct SMS conversation until the lead system is introduced.
+    const quoteMessage = encodeURIComponent(
+        'Hi Bubble Clean, I would like more information about your cleaning services and a free quote.',
+    );
+    const quoteHref = `sms:${contactPhoneHref}?body=${quoteMessage}`;
 
     return (
         <PublicLayout
