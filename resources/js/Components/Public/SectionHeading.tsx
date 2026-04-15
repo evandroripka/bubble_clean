@@ -24,7 +24,7 @@ export default function SectionHeading({
                 .join(' ')}
         >
             <div className="section-heading__eyebrow">
-                <img src="/images/theme/brush.png" alt="" aria-hidden="true" />
+                <span className="section-heading__mark" aria-hidden="true" />
                 <span>{eyebrow}</span>
             </div>
 
