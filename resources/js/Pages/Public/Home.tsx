@@ -1,3 +1,4 @@
+import AreaCoverageSlider from '@/Components/Public/AreaCoverageSlider';
 import SectionHeading from '@/Components/Public/SectionHeading';
 import ServiceCard from '@/Components/Public/ServiceCard';
 import PublicLayout from '@/Layouts/PublicLayout';
@@ -5,6 +6,7 @@ import {
     footerLocation,
     homeAddOns,
     homeCoverage,
+    homeCoverageSlides,
     homeFeatures,
     homeFinalCta,
     homeHero,
@@ -227,10 +229,7 @@ export default function Home({
                     </div>
 
                     <div className="coverage-media">
-                        <img
-                            src={homeCoverage.image}
-                            alt="Before and after cleaning result"
-                        />
+                        <AreaCoverageSlider slides={homeCoverageSlides} />
                     </div>
                 </div>
             </section>

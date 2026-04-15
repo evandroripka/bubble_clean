@@ -1,8 +1,15 @@
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 .DS_Store
 .env
 .env.backup
 .env.production
+.env.local
+.env.testing
+.eslintcache
 .phpactor.json
 .phpunit.result.cache
 /.fleet
@@ -12,7 +19,10 @@
 /.vscode
 /.zed
 /auth.json
+/coverage
+/docs
 /node_modules
+/database/*.sqlite
 /public/build
 /public/hot
 /public/storage

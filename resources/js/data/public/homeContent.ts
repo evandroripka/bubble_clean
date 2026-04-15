@@ -19,6 +19,13 @@ export type HomeService = {
     featured?: boolean;
 };
 
+export type HomeCoverageSlide = {
+    area: string;
+    image: string;
+    alt: string;
+    note: string;
+};
+
 export const publicNavItems: PublicNavItem[] = [
     { href: '#home', label: 'Home' },
     { href: '#services', label: 'Services' },
@@ -120,16 +127,48 @@ export const homeCoverage = {
     title: 'Nearby neighborhoods we commonly serve.',
     description:
         'We work across Staten Island with a local-first approach, fast communication, and recurring scheduling designed around nearby homes and small offices.',
-    image: '/images/home/before-after-results.webp',
 };
 
-export const homeNeighborhoods = [
-    'St. George',
-    'South Beach',
-    'Dongan Hills',
-    'Grant City',
-    'New Dorp',
+export const homeCoverageSlides: HomeCoverageSlide[] = [
+    {
+        area: 'St. George',
+        image: '/images/areas/st-george.webp',
+        alt: 'Cleaning work performed for homes in St. George',
+        note: 'Reliable home cleaning with clear scheduling and detail-focused service.',
+    },
+    {
+        area: 'South Beach',
+        image: '/images/areas/south-beach.webp',
+        alt: 'Freshly cleaned interior for South Beach service area',
+        note: 'Recurring cleaning support for apartments and family homes near the shore.',
+    },
+    {
+        area: 'Dongan Hills',
+        image: '/images/areas/dongan-hills.webp',
+        alt: 'Window and detail cleaning for Dongan Hills service area',
+        note: 'Careful reset work for kitchens, bathrooms, glass and finishing details.',
+    },
+    {
+        area: 'Grant City',
+        image: '/images/areas/grant-city.webp',
+        alt: 'Residential cleaning scene for Grant City service area',
+        note: 'Flexible recurring schedules for busy routines and local households.',
+    },
+    {
+        area: 'New Dorp',
+        image: '/images/areas/new-dorp.webp',
+        alt: 'Before and after cleaning result for New Dorp service area',
+        note: 'Visible improvement, dependable communication and fast quote turnaround.',
+    },
+    {
+        area: 'Midland Beach',
+        image: '/images/areas/midland-beach.webp',
+        alt: 'Bubble Clean team servicing Midland Beach homes',
+        note: 'Added service area with local-first support for homes close to Midland Beach.',
+    },
 ];
+
+export const homeNeighborhoods = homeCoverageSlides.map((slide) => slide.area);
 
 export const homeFinalCta = {
     eyebrow: 'Want your home cleaned this week?',
